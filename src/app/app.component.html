@@ -1,21 +1,142 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<mat-accordion class="example-headers-align">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div class="establishment-icon-container">
+          <img src="https://maps.gstatic.com/mapfiles/place_api/icons/lodging-71.png" height="24">
+        </div>
+        Hotel ZAGI
+      </mat-panel-title>
+      <mat-panel-description>
+        Ulica Milana Prpića 46, Oroslavje
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item>
+        <mat-icon>star_rate</mat-icon> 4.3 / 5 - 425 reviews
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon>av_timer</mat-icon>
+        <span class="opening-hours-open">Open</span>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon>map</mat-icon>
+        <a mat-raised-button href="https://maps.google.com/?q=45.992247,15.91751099999999" target="_blank">Open in
+          Google Maps</a>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
 
-<router-outlet></router-outlet>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div class="establishment-icon-container">
+          <img src="https://maps.gstatic.com/mapfiles/place_api/icons/civic_building-71.png" height="24">
+        </div>
+        Fina - financijska agencija
+      </mat-panel-title>
+      <mat-panel-description>
+        Ulica Milana Prpića 80, Oroslavje
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item>
+        <mat-icon>star_rate</mat-icon> 3 / 5 - 1 reviews
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon>av_timer</mat-icon>
+        <span class="opening-hours-closed">Closed</span>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon>map</mat-icon>
+        <a mat-raised-button href="https://maps.google.com/?q=45.992247,15.91751099999999" target="_blank">Open in
+          Google Maps</a>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div class="establishment-icon-container">
+          <img src="https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png" height="24">
+        </div>
+        Oroslavje Elementary School
+      </mat-panel-title>
+      <mat-panel-description>
+        Ulica Antuna Mihanovića 6, Oroslavje
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item>
+        <mat-icon>star_rate</mat-icon> 3.8 / 5 - 5 reviews
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon>map</mat-icon>
+        <a mat-raised-button href="https://maps.google.com/?q=45.992247,15.91751099999999" target="_blank">Open in
+          Google Maps</a>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div class="establishment-icon-container">
+          <img src="https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png" height="24">
+        </div>
+        Bibi
+      </mat-panel-title>
+      <mat-panel-description>
+        Ulica Milana Prpića 32, Oroslavje
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item>
+        <mat-icon>star_rate</mat-icon> 4.3 / 5 - 98 reviews
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon class="money-icon">attach_money</mat-icon>
+        <mat-icon class="money-icon">attach_money</mat-icon>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon>av_timer</mat-icon>
+        <span class="opening-hours-open">Open</span>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon>map</mat-icon>
+        <a mat-raised-button href="https://maps.google.com/?q=45.992247,15.91751099999999" target="_blank">Open in
+          Google Maps</a>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div class="establishment-icon-container">
+          <img src="https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png" height="24">
+        </div>
+        Konzum
+      </mat-panel-title>
+      <mat-panel-description>
+        Ulica Milana Prpića 49, Oroslavje
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-list>
+        <mat-list-item>
+          <mat-icon>star_rate</mat-icon> 3.7 / 5 - 10 reviews
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon>av_timer</mat-icon>
+          <span class="opening-hours-open">Open</span>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon>map</mat-icon>
+          <a mat-raised-button href="https://maps.google.com/?q=45.992247,15.91751099999999" target="_blank">Open in
+            Google Maps</a>
+        </mat-list-item>
+      </mat-list>
+  </mat-expansion-panel>
+
+</mat-accordion>

@@ -1,0 +1,30 @@
+.establishment-icon-container {
+    margin-right: 16px;
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+  justify-content: start;
+  align-items: center;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+    flex-grow: 1.5;
+}
+
+.mat-icon {
+    margin-right: 16px;
+}
+
+.money-icon {
+    margin-right: -10px;
+}
+
+.opening-hours-open {
+    color: green;
+}
+
+.opening-hours-closed {
+    color: #DB4437;
+}
