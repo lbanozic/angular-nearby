@@ -9,8 +9,8 @@
 <!-- Search -->
 <mat-form-field id="search-form-field">
   <mat-icon matPrefix class="search-icon">search</mat-icon>
-  <input matInput type="text" placeholder="Name of the place" [(ngModel)]="value">
-  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+  <input matInput type="text" placeholder="Name of the place" [(ngModel)]="searchValue" (ngModelChange)="onSearch()">
+  <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="resetSearch()">
     <mat-icon>close</mat-icon>
   </button>
 </mat-form-field>
@@ -31,7 +31,7 @@
   <mat-accordion class="accordion-headers-align">
 
     <!-- Loop through places -->
-    <mat-expansion-panel *ngFor="let place of places.results">
+    <mat-expansion-panel *ngFor="let place of places">
 
       <mat-expansion-panel-header>
 
@@ -59,6 +59,11 @@
         <mat-list-item *ngIf="place.rating && place.user_ratings_total">
           <mat-icon>star_rate</mat-icon> {{ place.rating }} / 5 - {{ place.user_ratings_total }}
           {{ place.user_ratings_total === 1 ? 'review' : 'reviews' }}
+        </mat-list-item>
+
+        <!-- Place price level -->
+        <mat-list-item *ngIf="place.price_level">
+          <mat-icon class="money-icon" *ngFor="let i of [].constructor(place.price_level)" >attach_money</mat-icon>
         </mat-list-item>
 
         <!-- Place Open/Closed -->
