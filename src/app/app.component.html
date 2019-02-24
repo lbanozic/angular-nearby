@@ -5,148 +5,157 @@
   </button>
 </div>
 
-<mat-accordion class="example-headers-align">
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <div class="establishment-icon-container">
-          <img src="https://maps.gstatic.com/mapfiles/place_api/icons/lodging-71.png" height="24">
-        </div>
-        Hotel ZAGI
-      </mat-panel-title>
-      <mat-panel-description>
-        Ulica Milana Prpića 46, Oroslavje
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <mat-list>
-      <mat-list-item>
-        <mat-icon>star_rate</mat-icon> 4.3 / 5 - 425 reviews
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon>av_timer</mat-icon>
-        <span class="opening-hours-open">Open</span>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon>map</mat-icon>
-        <a mat-raised-button href="https://maps.google.com/?q=45.992247,15.91751099999999" target="_blank">Open in
-          Google Maps</a>
-      </mat-list-item>
-    </mat-list>
-  </mat-expansion-panel>
+<mat-form-field class="example-form-field">
+  <mat-icon matPrefix class="search-icon">search</mat-icon>
+  <input matInput type="text" placeholder="Name of the place" [(ngModel)]="value">
+  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
 
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <div class="establishment-icon-container">
-          <img src="https://maps.gstatic.com/mapfiles/place_api/icons/civic_building-71.png" height="24">
-        </div>
-        Fina - financijska agencija
-      </mat-panel-title>
-      <mat-panel-description>
-        Ulica Milana Prpića 80, Oroslavje
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <mat-list>
-      <mat-list-item>
-        <mat-icon>star_rate</mat-icon> 3 / 5 - 1 reviews
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon>av_timer</mat-icon>
-        <span class="opening-hours-closed">Closed</span>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon>map</mat-icon>
-        <a mat-raised-button href="https://maps.google.com/?q=45.992247,15.91751099999999" target="_blank">Open in
-          Google Maps</a>
-      </mat-list-item>
-    </mat-list>
-  </mat-expansion-panel>
+<div class="places-list-container">
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="establishment-icon-container">
+            <img src="https://maps.gstatic.com/mapfiles/place_api/icons/lodging-71.png" height="24">
+          </div>
+          Hotel ZAGI
+        </mat-panel-title>
+        <mat-panel-description>
+          Ulica Milana Prpića 46, Oroslavje
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <mat-list-item>
+          <mat-icon>star_rate</mat-icon> 4.3 / 5 - 425 reviews
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon>av_timer</mat-icon>
+          <span class="opening-hours-open">Open</span>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon>map</mat-icon>
+          <a mat-raised-button href="https://maps.google.com/?q=45.992247,15.91751099999999" target="_blank">Open in
+            Google Maps</a>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
 
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <div class="establishment-icon-container">
-          <img src="https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png" height="24">
-        </div>
-        Oroslavje Elementary School
-      </mat-panel-title>
-      <mat-panel-description>
-        Ulica Antuna Mihanovića 6, Oroslavje
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <mat-list>
-      <mat-list-item>
-        <mat-icon>star_rate</mat-icon> 3.8 / 5 - 5 reviews
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon>map</mat-icon>
-        <a mat-raised-button href="https://maps.google.com/?q=45.992247,15.91751099999999" target="_blank">Open in
-          Google Maps</a>
-      </mat-list-item>
-    </mat-list>
-  </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="establishment-icon-container">
+            <img src="https://maps.gstatic.com/mapfiles/place_api/icons/civic_building-71.png" height="24">
+          </div>
+          Fina - financijska agencija
+        </mat-panel-title>
+        <mat-panel-description>
+          Ulica Milana Prpića 80, Oroslavje
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <mat-list-item>
+          <mat-icon>star_rate</mat-icon> 3 / 5 - 1 reviews
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon>av_timer</mat-icon>
+          <span class="opening-hours-closed">Closed</span>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon>map</mat-icon>
+          <a mat-raised-button href="https://maps.google.com/?q=45.992247,15.91751099999999" target="_blank">Open in
+            Google Maps</a>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
 
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <div class="establishment-icon-container">
-          <img src="https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png" height="24">
-        </div>
-        Bibi
-      </mat-panel-title>
-      <mat-panel-description>
-        Ulica Milana Prpića 32, Oroslavje
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <mat-list>
-      <mat-list-item>
-        <mat-icon>star_rate</mat-icon> 4.3 / 5 - 98 reviews
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon class="money-icon">attach_money</mat-icon>
-        <mat-icon class="money-icon">attach_money</mat-icon>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon>av_timer</mat-icon>
-        <span class="opening-hours-open">Open</span>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon>map</mat-icon>
-        <a mat-raised-button href="https://maps.google.com/?q=45.992247,15.91751099999999" target="_blank">Open in
-          Google Maps</a>
-      </mat-list-item>
-    </mat-list>
-  </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="establishment-icon-container">
+            <img src="https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png" height="24">
+          </div>
+          Oroslavje Elementary School
+        </mat-panel-title>
+        <mat-panel-description>
+          Ulica Antuna Mihanovića 6, Oroslavje
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <mat-list-item>
+          <mat-icon>star_rate</mat-icon> 3.8 / 5 - 5 reviews
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon>map</mat-icon>
+          <a mat-raised-button href="https://maps.google.com/?q=45.992247,15.91751099999999" target="_blank">Open in
+            Google Maps</a>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
 
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <div class="establishment-icon-container">
-          <img src="https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png" height="24">
-        </div>
-        Konzum
-      </mat-panel-title>
-      <mat-panel-description>
-        Ulica Milana Prpića 49, Oroslavje
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <mat-list>
-      <mat-list-item>
-        <mat-icon>star_rate</mat-icon> 3.7 / 5 - 10 reviews
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon>av_timer</mat-icon>
-        <span class="opening-hours-open">Open</span>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon>map</mat-icon>
-        <a mat-raised-button href="https://maps.google.com/?q=45.992247,15.91751099999999" target="_blank">Open in
-          Google Maps</a>
-      </mat-list-item>
-    </mat-list>
-  </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="establishment-icon-container">
+            <img src="https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png" height="24">
+          </div>
+          Bibi
+        </mat-panel-title>
+        <mat-panel-description>
+          Ulica Milana Prpića 32, Oroslavje
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <mat-list-item>
+          <mat-icon>star_rate</mat-icon> 4.3 / 5 - 98 reviews
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon class="money-icon">attach_money</mat-icon>
+          <mat-icon class="money-icon">attach_money</mat-icon>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon>av_timer</mat-icon>
+          <span class="opening-hours-open">Open</span>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon>map</mat-icon>
+          <a mat-raised-button href="https://maps.google.com/?q=45.992247,15.91751099999999" target="_blank">Open in
+            Google Maps</a>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
 
-</mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="establishment-icon-container">
+            <img src="https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png" height="24">
+          </div>
+          Konzum
+        </mat-panel-title>
+        <mat-panel-description>
+          Ulica Milana Prpića 49, Oroslavje
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <mat-list-item>
+          <mat-icon>star_rate</mat-icon> 3.7 / 5 - 10 reviews
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon>av_timer</mat-icon>
+          <span class="opening-hours-open">Open</span>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon>map</mat-icon>
+          <a mat-raised-button href="https://maps.google.com/?q=45.992247,15.91751099999999" target="_blank">Open in
+            Google Maps</a>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
 
 <div id="load-more-places-button-container">
   <button mat-raised-button>

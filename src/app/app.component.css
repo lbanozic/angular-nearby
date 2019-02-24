@@ -2,6 +2,15 @@
     margin-bottom: 16px;
 }
 
+.example-form-field {
+    margin-left: 15px;
+    width: 300px;
+}
+
+.places-list-container {
+    max-width: 800px;
+}
+
 .establishment-icon-container {
     margin-right: 16px;
 }
@@ -17,11 +26,11 @@
     flex-grow: 1.5;
 }
 
-.mat-icon {
+.mat-list-item .mat-icon {
     margin-right: 16px;
 }
 
-.money-icon {
+.mat-list-item .money-icon {
     margin-right: -10px;
 }
 
@@ -35,6 +44,12 @@
 
 #load-more-places-button-container {
     margin-top: 16px;
+}
+
+.search-icon {
+    margin-right: 8px;
+    position: relative;
+    top: 7px;
 }
 
 .button-action-icon {
