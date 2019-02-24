@@ -10,7 +10,8 @@ import {
   MatButtonModule,
   MatInputModule,
   MatFormFieldModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatCardModule
 } from '@angular/material'
 
 import { AppRoutingModule } from './app-routing.module';
@@ -32,7 +33,8 @@ import { AppComponent } from './app.component';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

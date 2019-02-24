@@ -26,6 +26,17 @@
     flex-grow: 1.5;
 }
 
+.error {
+    max-width: 400px;
+    color: #e80012;
+}
+
+.error-message {
+    position: relative;
+    bottom: 6px;
+    left: 16px;
+}
+
 /*
 ******************
                   Get places

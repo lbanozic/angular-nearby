@@ -14,28 +14,44 @@ export class AppComponent implements OnInit {
   // places: PlaceResult[];
   places: any;
   placeResults: PlaceResult[];
-
   filters: Filter[] = [];
+  errorLoading: boolean = false;
 
   constructor(private placeService: PlaceService) { }
 
   ngOnInit() {
+    // this.getPlaces();
+  }
+
+  getPlaces() {
+
+    // set default values
+    this.filters = [];
+    this.searchValue = '';
+
+    // get places from service
     // this.placeService.getPlaces().subscribe(place => {
     //   this.places = place.results;
     //   this.placeResults = this.places;
     // });
-    // use code below to replace calling places API with sample places
     this.places = placesSample.results;
-    this.placeResults = this.places;
 
-    // construct filters with place types
-    this.placeResults.forEach(p => {
-      p.types.forEach(t => {
-        if (this.filters.filter(function (f) { return f.name === t; }).length === 0) {
-          this.filters.push(new Filter(t));
-        }
+    this.errorLoading = false;
+
+    if (this.places && this.places.length) {
+      this.placeResults = this.places;
+
+      // construct filters with place types
+      this.placeResults.forEach(p => {
+        p.types.forEach(t => {
+          if (this.filters.filter(function (f) { return f.name === t; }).length === 0) {
+            this.filters.push(new Filter(t));
+          }
+        });
       });
-    });
+    } else {
+      this.errorLoading = true;
+    }
   }
 
   // update places that match filters and search value

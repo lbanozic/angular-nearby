@@ -1,93 +1,105 @@
 <!-- Get places nearby -->
 <div id="get-places-button-container">
-  <button mat-raised-button color="primary">
+  <button mat-raised-button color="primary" (click)="getPlaces()">
     Get places nearby
     <mat-icon class="button-action-icon">near_me</mat-icon>
   </button>
 </div>
 
-<!-- Search -->
-<mat-form-field id="search-form-field">
-  <mat-icon matPrefix class="search-icon">search</mat-icon>
-  <input matInput type="text" placeholder="Name of the place" [(ngModel)]="searchValue" (ngModelChange)="onSearch()">
-  <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="resetSearch()">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field>
+<ng-template [ngIf]="placeResults && placeResults.length">
 
-<!-- Filters -->
-<div id="filters-container">
-  <mat-checkbox color="primary" [(ngModel)]="filter.checked" *ngFor="let filter of filters"
-    (ngModelChange)="onFilterChange()">{{ filter.getName() }}</mat-checkbox>
-</div>
+  <!-- Search -->
+  <mat-form-field id="search-form-field">
+    <mat-icon matPrefix class="search-icon">search</mat-icon>
+    <input matInput type="text" placeholder="Name of the place" [(ngModel)]="searchValue" (ngModelChange)="onSearch()">
+    <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="resetSearch()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
 
-<!-- List of places -->
-<div id="places-list-container">
-  <mat-accordion class="accordion-headers-align">
+  <!-- Filters -->
+  <div id="filters-container">
+    <mat-checkbox color="primary" [(ngModel)]="filter.checked" *ngFor="let filter of filters"
+      (ngModelChange)="onFilterChange()">{{ filter.getName() }}</mat-checkbox>
+  </div>
 
-    <!-- Loop through places -->
-    <mat-expansion-panel *ngFor="let place of places">
+  <!-- List of places -->
+  <div id="places-list-container">
+    <mat-accordion class="accordion-headers-align">
 
-      <mat-expansion-panel-header>
+      <!-- Loop through places -->
+      <mat-expansion-panel *ngFor="let place of places">
 
-        <mat-panel-title>
+        <mat-expansion-panel-header>
 
-          <!-- Place icon -->
-          <div class="place-icon-container">
-            <img src="{{ place.icon }}">
-          </div>
+          <mat-panel-title>
 
-          <!-- Place name -->
-          {{ place.name }}
-        </mat-panel-title>
+            <!-- Place icon -->
+            <div class="place-icon-container">
+              <img src="{{ place.icon }}">
+            </div>
 
-        <!-- Place vicinity -->
-        <mat-panel-description>
-          {{ place.vicinity }}
-        </mat-panel-description>
+            <!-- Place name -->
+            {{ place.name }}
+          </mat-panel-title>
 
-      </mat-expansion-panel-header>
+          <!-- Place vicinity -->
+          <mat-panel-description>
+            {{ place.vicinity }}
+          </mat-panel-description>
 
-      <mat-list>
+        </mat-expansion-panel-header>
 
-        <!-- Place rating -->
-        <mat-list-item *ngIf="place.rating && place.user_ratings_total">
-          <mat-icon>star_rate</mat-icon> {{ place.rating }} / 5 - {{ place.user_ratings_total }}
-          {{ place.user_ratings_total === 1 ? 'review' : 'reviews' }}
-        </mat-list-item>
+        <mat-list>
 
-        <!-- Place price level -->
-        <mat-list-item *ngIf="place.price_level">
-          <mat-icon class="money-icon" *ngFor="let i of [].constructor(place.price_level)">attach_money</mat-icon>
-        </mat-list-item>
+          <!-- Place rating -->
+          <mat-list-item *ngIf="place.rating && place.user_ratings_total">
+            <mat-icon>star_rate</mat-icon> {{ place.rating }} / 5 - {{ place.user_ratings_total }}
+            {{ place.user_ratings_total === 1 ? 'review' : 'reviews' }}
+          </mat-list-item>
 
-        <!-- Place Open/Closed -->
-        <mat-list-item *ngIf="place.opening_hours">
-          <mat-icon>av_timer</mat-icon>
-          <span class="{{ place.opening_hours.open_now ? 'opening-hours-open' : 'opening-hours-closed' }}">
-            {{ place.opening_hours.open_now ? 'Open' : 'Closed' }}
-          </span>
-        </mat-list-item>
+          <!-- Place price level -->
+          <mat-list-item *ngIf="place.price_level">
+            <mat-icon class="money-icon" *ngFor="let i of [].constructor(place.price_level)">attach_money</mat-icon>
+          </mat-list-item>
 
-        <!-- Place Maps link -->
-        <mat-list-item>
-          <mat-icon>map</mat-icon>
-          <a mat-raised-button
-            href="https://www.google.com/maps/search/?api=1&query={{ place.vicinity }}&query_place_id={{ place.place_id }}"
-            target="_blank">
-            Open in Google Maps
-          </a>
-        </mat-list-item>
+          <!-- Place Open/Closed -->
+          <mat-list-item *ngIf="place.opening_hours">
+            <mat-icon>av_timer</mat-icon>
+            <span class="{{ place.opening_hours.open_now ? 'opening-hours-open' : 'opening-hours-closed' }}">
+              {{ place.opening_hours.open_now ? 'Open' : 'Closed' }}
+            </span>
+          </mat-list-item>
 
-      </mat-list>
-    </mat-expansion-panel>
-  </mat-accordion>
-</div>
+          <!-- Place Maps link -->
+          <mat-list-item>
+            <mat-icon>map</mat-icon>
+            <a mat-raised-button
+              href="https://www.google.com/maps/search/?api=1&query={{ place.vicinity }}&query_place_id={{ place.place_id }}"
+              target="_blank">
+              Open in Google Maps
+            </a>
+          </mat-list-item>
 
-<!-- Get more places -->
-<div id="get-more-places-container">
-  <button mat-raised-button>
-    Get more
-    <mat-icon class="button-action-icon">arrow_downward</mat-icon>
-  </button>
-</div>
+        </mat-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <!-- Get more places -->
+  <div id="get-more-places-container">
+    <button mat-raised-button>
+      Get more
+      <mat-icon class="button-action-icon">arrow_downward</mat-icon>
+    </button>
+  </div>
+
+</ng-template>
+
+<!-- Error loading message -->
+<ng-template [ngIf]="errorLoading">
+  <mat-card class="error">
+    <mat-icon>error</mat-icon>
+    <span class="error-message">Can't get nearby places.</span>
+  </mat-card>
+</ng-template>
