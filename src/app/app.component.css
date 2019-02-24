@@ -7,6 +7,14 @@
     width: 300px;
 }
 
+#filters-container {
+    margin: 8px 0 25px 16px;
+}
+
+#filters-container .mat-checkbox {
+    margin-right: 16px;
+}
+
 .places-list-container {
     max-width: 800px;
 }
