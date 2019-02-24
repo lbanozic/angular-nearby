@@ -1,3 +1,10 @@
+<div id="get-places-button-container">
+  <button mat-raised-button color="primary">
+    Get places nearby
+    <mat-icon class="button-action-icon">near_me</mat-icon>
+  </button>
+</div>
+
 <mat-accordion class="example-headers-align">
   <mat-expansion-panel>
     <mat-expansion-panel-header>
@@ -124,19 +131,26 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <mat-list>
-        <mat-list-item>
-          <mat-icon>star_rate</mat-icon> 3.7 / 5 - 10 reviews
-        </mat-list-item>
-        <mat-list-item>
-          <mat-icon>av_timer</mat-icon>
-          <span class="opening-hours-open">Open</span>
-        </mat-list-item>
-        <mat-list-item>
-          <mat-icon>map</mat-icon>
-          <a mat-raised-button href="https://maps.google.com/?q=45.992247,15.91751099999999" target="_blank">Open in
-            Google Maps</a>
-        </mat-list-item>
-      </mat-list>
+      <mat-list-item>
+        <mat-icon>star_rate</mat-icon> 3.7 / 5 - 10 reviews
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon>av_timer</mat-icon>
+        <span class="opening-hours-open">Open</span>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon>map</mat-icon>
+        <a mat-raised-button href="https://maps.google.com/?q=45.992247,15.91751099999999" target="_blank">Open in
+          Google Maps</a>
+      </mat-list-item>
+    </mat-list>
   </mat-expansion-panel>
 
 </mat-accordion>
+
+<div id="load-more-places-button-container">
+  <button mat-raised-button>
+    Get more
+    <mat-icon class="button-action-icon">arrow_downward</mat-icon>
+  </button>
+</div>

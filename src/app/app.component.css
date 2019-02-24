@@ -1,3 +1,7 @@
+#get-places-button-container {
+    margin-bottom: 16px;
+}
+
 .establishment-icon-container {
     margin-right: 16px;
 }
@@ -27,4 +31,13 @@
 
 .opening-hours-closed {
     color: #DB4437;
+}
+
+#load-more-places-button-container {
+    margin-top: 16px;
+}
+
+.button-action-icon {
+    margin-right: 0;
+    margin-left: 8px;
 }
