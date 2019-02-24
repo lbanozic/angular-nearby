@@ -9,4 +9,5 @@ export class PlaceResult {
     price_level: number;
     opening_hours: PlaceOpeningHours;
     place_id: string;
+    types: string[];
 }

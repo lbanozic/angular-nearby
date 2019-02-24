@@ -17,13 +17,8 @@
 
 <!-- Filters -->
 <div id="filters-container">
-  <mat-checkbox color="primary" checked="true">Finance</mat-checkbox>
-  <mat-checkbox color="primary" checked="true">School</mat-checkbox>
-  <mat-checkbox color="primary" checked="true">Establishment</mat-checkbox>
-  <mat-checkbox color="primary" checked="true">Health</mat-checkbox>
-  <mat-checkbox color="primary" checked="true">Food</mat-checkbox>
-  <mat-checkbox color="primary" checked="true">Point of interest</mat-checkbox>
-  <mat-checkbox color="primary" checked="true">Political</mat-checkbox>
+  <mat-checkbox color="primary" [(ngModel)]="filter.checked" *ngFor="let filter of filters"
+    (ngModelChange)="onFilterChange()">{{ filter.name }}</mat-checkbox>
 </div>
 
 <!-- List of places -->
@@ -63,7 +58,7 @@
 
         <!-- Place price level -->
         <mat-list-item *ngIf="place.price_level">
-          <mat-icon class="money-icon" *ngFor="let i of [].constructor(place.price_level)" >attach_money</mat-icon>
+          <mat-icon class="money-icon" *ngFor="let i of [].constructor(place.price_level)">attach_money</mat-icon>
         </mat-list-item>
 
         <!-- Place Open/Closed -->
