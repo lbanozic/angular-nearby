@@ -18,7 +18,7 @@
 <!-- Filters -->
 <div id="filters-container">
   <mat-checkbox color="primary" [(ngModel)]="filter.checked" *ngFor="let filter of filters"
-    (ngModelChange)="onFilterChange()">{{ filter.name }}</mat-checkbox>
+    (ngModelChange)="onFilterChange()">{{ filter.getName() }}</mat-checkbox>
 </div>
 
 <!-- List of places -->

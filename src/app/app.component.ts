@@ -79,4 +79,9 @@ class Filter {
   constructor(name: string) {
     this.name = name;
   }
+
+  public getName(): string {
+    const name = this.name.replace(/_/g, ' ');
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  }
 }
