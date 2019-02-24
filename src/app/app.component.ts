@@ -38,25 +38,30 @@ export class AppComponent implements OnInit {
     });
   }
 
+  // update places that match filters and search value
   onSearch() {
     let filteredPlaces = this.filterPlaces(this.placeResults);
     this.places = this.searchPlaces(filteredPlaces);
   }
 
+  // get places from given places that match search value
   searchPlaces(places: PlaceResult[]) {
     return places.filter(p => p.name.toLowerCase().indexOf(this.searchValue.toLowerCase()) > -1);
   }
 
+  // reset search value and apply filters
   resetSearch() {
     this.searchValue = '';
     this.places = this.filterPlaces(this.placeResults);
   }
 
+  // update places that match search value and filters
   onFilterChange() {
     let searchedPlaces = this.searchPlaces(this.placeResults);
     this.places = this.filterPlaces(searchedPlaces);
   }
 
+  // get places from given places that match filters
   filterPlaces(places: PlaceResult[]) {
     let checkedFilters = this.filters.filter(p => p.checked);
     return places.filter(p => {
