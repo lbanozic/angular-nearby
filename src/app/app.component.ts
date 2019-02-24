@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { placesSample } from '../places-sample'
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   value = '';
+  places:any = placesSample;
+  
+  constructor() {
+    console.log(this.places);
+  }
 }
