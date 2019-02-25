@@ -97,9 +97,14 @@
 </ng-template>
 
 <!-- Error loading message -->
-<ng-template [ngIf]="errorLoading">
+<ng-template [ngIf]="showLoadingError">
   <mat-card class="error">
     <mat-icon>error</mat-icon>
     <span class="error-message">Can't get nearby places.</span>
   </mat-card>
 </ng-template>
+
+<!-- Spinner -->
+<div class="spinner-container" *ngIf="showLoadingSpinner">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>

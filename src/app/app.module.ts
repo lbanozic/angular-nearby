@@ -11,7 +11,8 @@ import {
   MatInputModule,
   MatFormFieldModule,
   MatCheckboxModule,
-  MatCardModule
+  MatCardModule,
+  MatProgressSpinnerModule
 } from '@angular/material'
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,7 +35,8 @@ import { AppComponent } from './app.component';
     MatInputModule,
     MatFormFieldModule,
     MatCheckboxModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

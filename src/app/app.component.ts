@@ -11,47 +11,53 @@ import { placesSample } from '../places-sample'
 })
 export class AppComponent implements OnInit {
   searchValue = '';
-  // places: PlaceResult[];
-  places: any;
+  places: PlaceResult[];
   placeResults: PlaceResult[];
   filters: Filter[] = [];
-  errorLoading: boolean = false;
+  showLoadingError: boolean = false;
+  showLoadingSpinner: boolean = false;
 
   constructor(private placeService: PlaceService) { }
 
-  ngOnInit() {
-    // this.getPlaces();
-  }
+  ngOnInit() {}
 
   getPlaces() {
 
+    // show loading spinner
+    this.showLoadingSpinner = true;
+
     // set default values
-    this.filters = [];
     this.searchValue = '';
+    this.places = [];
+    this.placeResults = [];
+    this.filters = [];
+    this.showLoadingError = false;
 
     // get places from service
-    // this.placeService.getPlaces().subscribe(place => {
-    //   this.places = place.results;
-    //   this.placeResults = this.places;
-    // });
-    this.places = placesSample.results;
-
-    this.errorLoading = false;
-
-    if (this.places && this.places.length) {
+    this.placeService.getPlaces().subscribe(place => {
+      this.places = place.results;
       this.placeResults = this.places;
 
-      // construct filters with place types
-      this.placeResults.forEach(p => {
-        p.types.forEach(t => {
-          if (this.filters.filter(function (f) { return f.name === t; }).length === 0) {
-            this.filters.push(new Filter(t));
-          }
+      if (this.places && this.places.length) {
+        this.placeResults = this.places;
+  
+        // construct filters with place types
+        this.placeResults.forEach(p => {
+          p.types.forEach(t => {
+            if (this.filters.filter(function (f) { return f.name === t; }).length === 0) {
+              this.filters.push(new Filter(t));
+            }
+          });
         });
-      });
-    } else {
-      this.errorLoading = true;
-    }
+      } else {
+        this.showLoadingError = true;
+      }
+
+      // hide loading spinner
+      this.showLoadingSpinner = false;
+
+    });
+    
   }
 
   // update places that match filters and search value
