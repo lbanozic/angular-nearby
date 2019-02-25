@@ -16,15 +16,69 @@ export class AppComponent implements OnInit {
   filters: Filter[] = [];
   showLoadingError: boolean = false;
   showLoadingSpinner: boolean = false;
+  showLocationError: boolean = false;
+  locationError: string = '';
 
   constructor(private placeService: PlaceService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
+  // get user location and then get places from service
   getPlaces() {
+    this.getUserLocation((lat, lng) => {
+      this.getPlacesFromService(lat, lng);
+    })
+  }
 
-    // show loading spinner
+  // get user location
+  getUserLocation(getLatLng?: (lat: number, lng: number) => void) {
+
+    // reset location errors
+    this.showLocationError = false;
+    this.locationError = '';
+
+    //show loading spinner
     this.showLoadingSpinner = true;
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+
+        // successfully fetched location, execute getLatLng callback with location data
+        position => {
+          getLatLng(position.coords.latitude, position.coords.longitude);
+        },
+
+        // location error occurred, set location error message
+        error => {
+          switch (error.code) {
+            case error.PERMISSION_DENIED:
+              this.locationError = 'User denied the request for Geolocation.';
+              break;
+            case error.POSITION_UNAVAILABLE:
+              this.locationError = 'Location information is unavailable.';
+              break;
+            case error.TIMEOUT:
+              this.locationError = 'The request to get user location timed out.';
+              break;
+          }
+
+          // show location error
+          this.showLocationError = true;
+
+          // hide loading spinner
+          this.showLoadingSpinner = false;
+        });
+    } else {
+
+      // geolocation not supported by browser error
+      this.locationError = 'Geolocation is not supported by this browser.';
+      this.showLocationError = true;
+      this.showLoadingSpinner = false;
+    }
+  }
+
+  // get places by lat and lng
+  getPlacesFromService(lat: number, lng: number) {
 
     // set default values
     this.searchValue = '';
@@ -33,14 +87,15 @@ export class AppComponent implements OnInit {
     this.filters = [];
     this.showLoadingError = false;
 
-    // get places from service
-    this.placeService.getPlaces().subscribe(place => {
+    // get places from service by lat and lng
+    this.placeService.getPlaces(lat, lng).subscribe(place => {
+
+      // set fetched places data
       this.places = place.results;
       this.placeResults = this.places;
 
       if (this.places && this.places.length) {
-        this.placeResults = this.places;
-  
+
         // construct filters with place types
         this.placeResults.forEach(p => {
           p.types.forEach(t => {
@@ -50,6 +105,8 @@ export class AppComponent implements OnInit {
           });
         });
       } else {
+
+        // show loading error
         this.showLoadingError = true;
       }
 
@@ -57,7 +114,7 @@ export class AppComponent implements OnInit {
       this.showLoadingSpinner = false;
 
     });
-    
+
   }
 
   // update places that match filters and search value

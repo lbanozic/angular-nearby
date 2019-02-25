@@ -43,11 +43,6 @@
             {{ place.name }}
           </mat-panel-title>
 
-          <!-- Place vicinity -->
-          <mat-panel-description>
-            {{ place.vicinity }}
-          </mat-panel-description>
-
         </mat-expansion-panel-header>
 
         <mat-list>
@@ -69,6 +64,12 @@
             <span class="{{ place.opening_hours.open_now ? 'opening-hours-open' : 'opening-hours-closed' }}">
               {{ place.opening_hours.open_now ? 'Open' : 'Closed' }}
             </span>
+          </mat-list-item>
+
+          <!-- Place vicinity -->
+          <mat-list-item>
+            <mat-icon>place</mat-icon>
+            {{ place.vicinity }}
           </mat-list-item>
 
           <!-- Place Maps link -->
@@ -96,11 +97,17 @@
 
 </ng-template>
 
-<!-- Error loading message -->
+<!-- Loading places error -->
 <ng-template [ngIf]="showLoadingError">
   <mat-card class="error">
-    <mat-icon>error</mat-icon>
-    <span class="error-message">Can't get nearby places.</span>
+    <span>Can't get nearby places.</span>
+  </mat-card>
+</ng-template>
+
+<!-- Location error -->
+<ng-template [ngIf]="showLocationError">
+  <mat-card class="error">
+    <span>Can't get location. {{ locationError }}</span>
   </mat-card>
 </ng-template>
 

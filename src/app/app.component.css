@@ -27,14 +27,9 @@
 }
 
 .error {
-    max-width: 400px;
-    color: #e80012;
-}
-
-.error-message {
-    position: relative;
-    bottom: 6px;
-    left: 16px;
+    display: inline-block;
+    color: #a94442;
+    background-color: #f2dede;
 }
 
 .spinner-container {
