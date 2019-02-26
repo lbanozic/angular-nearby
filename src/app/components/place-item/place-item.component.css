@@ -1,0 +1,23 @@
+.place-icon-container {
+  margin-right: 16px;
+}
+
+.place-icon-container img {
+  height: 24px;
+}
+
+.mat-list-item .mat-icon {
+  margin-right: 16px;
+}
+
+.mat-list-item .money-icon {
+  margin-right: -10px;
+}
+
+.opening-hours-open {
+  color: green;
+}
+
+.opening-hours-closed {
+  color: #DB4437;
+}

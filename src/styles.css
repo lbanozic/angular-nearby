@@ -34,13 +34,23 @@ body {
 
 .accordion-headers-align .mat-expansion-panel-header-title,
 .accordion-headers-align .mat-expansion-panel-header-description {
-flex-basis: 0;
-justify-content: start;
-align-items: center;
+  flex-basis: 0;
+  justify-content: start;
+  align-items: center;
 }
 
 .accordion-headers-align .mat-expansion-panel-header-description {
   flex-grow: 1.5;
+}
+
+.mat-accordion .mat-expansion-panel:first-of-type {
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+}
+
+.mat-accordion .mat-expansion-panel:last-of-type {
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
 }
 
 .error {

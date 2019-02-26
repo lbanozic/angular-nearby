@@ -18,11 +18,13 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PlacesComponent } from './components/places/places.component';
+import { PlaceItemComponent } from './components/place-item/place-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlacesComponent
+    PlacesComponent,
+    PlaceItemComponent
   ],
   imports: [
     BrowserModule,
