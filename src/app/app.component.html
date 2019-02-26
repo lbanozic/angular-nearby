@@ -1,6 +1,6 @@
 <!-- Get places nearby -->
 <div id="get-places-button-container">
-  <button mat-raised-button color="primary" (click)="getPlaces()">
+  <button mat-raised-button color="primary" (click)="onGetPlaces()">
     Get places nearby
     <mat-icon class="button-action-icon">near_me</mat-icon>
   </button>
@@ -12,7 +12,7 @@
   <mat-form-field id="search-form-field">
     <mat-icon matPrefix class="search-icon">search</mat-icon>
     <input matInput type="text" placeholder="Name of the place" [(ngModel)]="searchValue" (ngModelChange)="onSearch()">
-    <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="resetSearch()">
+    <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="onResetSearch()">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
@@ -90,7 +90,7 @@
 
 <!-- Get more places -->
 <div id="get-more-places-container" *ngIf="nextPageToken">
-  <button mat-raised-button (click)="getMorePlaces()">
+  <button mat-raised-button (click)="onGetMorePlaces()">
     Get more
     <mat-icon class="button-action-icon">arrow_downward</mat-icon>
   </button>

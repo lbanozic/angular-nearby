@@ -24,42 +24,34 @@ export class AppComponent implements OnInit {
 
   ngOnInit() { }
 
-  getMorePlaces() {
-
-    // show loading spinner
-    this.showLoadingSpinner = true;
-
-    // set default values
-    this.searchValue = '';
-    this.filters = [];
-    this.showLoadingError = false;
-
-    if (this.nextPageToken) {
-      this.placeService.getPlacesByPageToken(this.nextPageToken).subscribe(place => {
-
-        // set fetched places data
-        this.nextPageToken = place.next_page_token;
-        this.places = this.placeResults.concat(place.results);
-        this.placeResults = this.places;
-
-        // set filters
-        if (this.places && this.places.length) {
-          this.setFilters(this.placeResults);
-        } else {
-          this.showLoadingError = true;
-        }
-        this.showLoadingSpinner = false;
-      });
-    } else {
-      this.showLoadingSpinner = false;
-    }
-  }
-
   // get user location and then get places from service
-  getPlaces() {
+  onGetPlaces() {
     this.getUserLocation((lat, lng) => {
       this.getPlacesFromService(lat, lng);
     })
+  }
+
+  // update places that match filters and search value
+  onSearch() {
+    let filteredPlaces = this.filterPlaces(this.placeResults);
+    this.places = this.searchPlaces(filteredPlaces);
+  }
+
+  // reset search value and apply filters
+  onResetSearch() {
+    this.searchValue = '';
+    this.places = this.filterPlaces(this.placeResults);
+  }
+
+  // update places that match search value and filters
+  onFilterChange() {
+    let searchedPlaces = this.searchPlaces(this.placeResults);
+    this.places = this.filterPlaces(searchedPlaces);
+  }
+
+  // get more places from service
+  onGetMorePlaces() {
+    this.getMorePlacesFromService(this.nextPageToken);
   }
 
   // get user location
@@ -138,40 +130,6 @@ export class AppComponent implements OnInit {
 
   }
 
-  // set filters with place types
-  setFilters(placeResults: PlaceResult[]) {
-    placeResults.forEach(p => {
-      p.types.forEach(t => {
-        if (this.filters.filter(function (f) { return f.name === t; }).length === 0) {
-          this.filters.push(new Filter(t));
-        }
-      });
-    });
-  }
-
-  // update places that match filters and search value
-  onSearch() {
-    let filteredPlaces = this.filterPlaces(this.placeResults);
-    this.places = this.searchPlaces(filteredPlaces);
-  }
-
-  // get places from given places that match search value
-  searchPlaces(places: PlaceResult[]) {
-    return places.filter(p => p.name.toLowerCase().indexOf(this.searchValue.toLowerCase()) > -1);
-  }
-
-  // reset search value and apply filters
-  resetSearch() {
-    this.searchValue = '';
-    this.places = this.filterPlaces(this.placeResults);
-  }
-
-  // update places that match search value and filters
-  onFilterChange() {
-    let searchedPlaces = this.searchPlaces(this.placeResults);
-    this.places = this.filterPlaces(searchedPlaces);
-  }
-
   // get places from given places that match filters
   filterPlaces(places: PlaceResult[]) {
     let checkedFilters = this.filters.filter(p => p.checked);
@@ -183,6 +141,54 @@ export class AppComponent implements OnInit {
         }
       });
       return matchesFilters;
+    });
+  }
+
+  // get places from given places that match search value
+  searchPlaces(places: PlaceResult[]) {
+    return places.filter(p => p.name.toLowerCase().indexOf(this.searchValue.toLowerCase()) > -1);
+  }
+
+  // get places by next page token
+  getMorePlacesFromService(nextPageToken: string) {
+
+    // show loading spinner
+    this.showLoadingSpinner = true;
+
+    // set default values
+    this.searchValue = '';
+    this.filters = [];
+    this.showLoadingError = false;
+
+    if (nextPageToken) {
+      this.placeService.getPlacesByPageToken(nextPageToken).subscribe(place => {
+
+        // set fetched places data
+        this.nextPageToken = place.next_page_token;
+        this.places = this.placeResults.concat(place.results);
+        this.placeResults = this.places;
+
+        // set filters
+        if (this.places && this.places.length) {
+          this.setFilters(this.placeResults);
+        } else {
+          this.showLoadingError = true;
+        }
+        this.showLoadingSpinner = false;
+      });
+    } else {
+      this.showLoadingSpinner = false;
+    }
+  }
+
+  // set filters with place types
+  setFilters(placeResults: PlaceResult[]) {
+    placeResults.forEach(p => {
+      p.types.forEach(t => {
+        if (this.filters.filter(function (f) { return f.name === t; }).length === 0) {
+          this.filters.push(new Filter(t));
+        }
+      });
     });
   }
 
