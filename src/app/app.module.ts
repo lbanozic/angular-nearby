@@ -17,10 +17,12 @@ import {
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PlacesComponent } from './components/places/places.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PlacesComponent
   ],
   imports: [
     BrowserModule,

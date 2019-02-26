@@ -1,0 +1,116 @@
+<!-- Get places nearby -->
+<div id="get-places-button-container">
+  <button mat-raised-button color="primary" (click)="onGetPlaces()">
+    Get places nearby
+    <mat-icon class="button-action-icon">near_me</mat-icon>
+  </button>
+</div>
+
+<ng-template [ngIf]="placeResults && placeResults.length">
+
+  <!-- Search -->
+  <mat-form-field id="search-form-field">
+    <mat-icon matPrefix class="search-icon">search</mat-icon>
+    <input matInput type="text" placeholder="Name of the place" [(ngModel)]="searchValue" (ngModelChange)="onSearch()">
+    <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="onResetSearch()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <!-- Filters -->
+  <div id="filters-container">
+    <mat-checkbox color="primary" [(ngModel)]="filter.checked" *ngFor="let filter of filters"
+      (ngModelChange)="onFilterChange()">{{ filter.getName() }}</mat-checkbox>
+  </div>
+
+  <!-- List of places -->
+  <div id="places-list-container">
+    <mat-accordion class="accordion-headers-align">
+
+      <!-- Loop through places -->
+      <mat-expansion-panel *ngFor="let place of places">
+
+        <mat-expansion-panel-header>
+
+          <mat-panel-title>
+
+            <!-- Place icon -->
+            <div class="place-icon-container">
+              <img src="{{ place.icon }}">
+            </div>
+
+            <!-- Place name -->
+            {{ place.name }}
+          </mat-panel-title>
+
+        </mat-expansion-panel-header>
+
+        <mat-list>
+
+          <!-- Place rating -->
+          <mat-list-item *ngIf="place.rating && place.user_ratings_total">
+            <mat-icon>star_rate</mat-icon> {{ place.rating }} / 5 - {{ place.user_ratings_total }}
+            {{ place.user_ratings_total === 1 ? 'review' : 'reviews' }}
+          </mat-list-item>
+
+          <!-- Place price level -->
+          <mat-list-item *ngIf="place.price_level">
+            <mat-icon class="money-icon" *ngFor="let i of [].constructor(place.price_level)">attach_money</mat-icon>
+          </mat-list-item>
+
+          <!-- Place Open/Closed -->
+          <mat-list-item *ngIf="place.opening_hours">
+            <mat-icon>av_timer</mat-icon>
+            <span class="{{ place.opening_hours.open_now ? 'opening-hours-open' : 'opening-hours-closed' }}">
+              {{ place.opening_hours.open_now ? 'Open' : 'Closed' }}
+            </span>
+          </mat-list-item>
+
+          <!-- Place vicinity -->
+          <mat-list-item>
+            <mat-icon>place</mat-icon>
+            {{ place.vicinity }}
+          </mat-list-item>
+
+          <!-- Place Maps link -->
+          <mat-list-item>
+            <mat-icon>map</mat-icon>
+            <a mat-raised-button
+              href="https://www.google.com/maps/search/?api=1&query={{ place.vicinity }}&query_place_id={{ place.place_id }}"
+              target="_blank">
+              Open in Google Maps
+            </a>
+          </mat-list-item>
+
+        </mat-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</ng-template>
+
+<!-- Get more places -->
+<div id="get-more-places-container" *ngIf="nextPageToken">
+  <button mat-raised-button (click)="onGetMorePlaces()">
+    Get more
+    <mat-icon class="button-action-icon">arrow_downward</mat-icon>
+  </button>
+</div>
+
+<!-- Loading places error -->
+<ng-template [ngIf]="showLoadingError">
+  <mat-card class="error">
+    <span>Can't get nearby places.</span>
+  </mat-card>
+</ng-template>
+
+<!-- Location error -->
+<ng-template [ngIf]="showLocationError">
+  <mat-card class="error">
+    <span>Can't get location. {{ locationError }}</span>
+  </mat-card>
+</ng-template>
+
+<!-- Spinner -->
+<div class="spinner-container" *ngIf="showLoadingSpinner">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>

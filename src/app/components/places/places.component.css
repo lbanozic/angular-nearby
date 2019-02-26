@@ -1,0 +1,79 @@
+/*
+******************
+                  Get places
+******************
+*/
+
+#get-places-button-container {
+    margin-bottom: 16px;
+}
+
+/*
+******************
+                  Search
+******************
+*/
+
+#search-form-field {
+    margin-left: 15px;
+    width: 300px;
+}
+
+/*
+******************
+                  Filters
+******************
+*/
+
+#filters-container {
+    margin: 8px 0 25px 16px;
+    max-width: 800px;
+}
+
+#filters-container .mat-checkbox {
+    margin-right: 16px;
+}
+
+/*
+******************
+                  List of places
+******************
+*/
+
+#places-list-container {
+    max-width: 800px;
+}
+
+.place-icon-container {
+    margin-right: 16px;
+}
+
+.place-icon-container img {
+    height: 24px;
+}
+
+.mat-list-item .mat-icon {
+    margin-right: 16px;
+}
+
+.mat-list-item .money-icon {
+    margin-right: -10px;
+}
+
+.opening-hours-open {
+    color: green;
+}
+
+.opening-hours-closed {
+    color: #DB4437;
+}
+
+/*
+******************
+                  Get more places
+******************
+*/
+
+#get-more-places-container {
+    margin-top: 16px;
+}

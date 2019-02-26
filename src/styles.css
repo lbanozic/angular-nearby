@@ -1,4 +1,16 @@
+/*
+******************
+                  Imports
+******************
+*/
+
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+/*
+******************
+                  General
+******************
+*/
 
 body { 
   font-family: Roboto, Arial, sans-serif;
@@ -9,7 +21,47 @@ body {
   padding: 30px;
 }
 
-.version-info {
-  font-size: 8pt;
-  float: right;
+.button-action-icon {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+.search-icon {
+  margin-right: 8px;
+  position: relative;
+  top: 7px;
+}
+
+.accordion-headers-align .mat-expansion-panel-header-title,
+.accordion-headers-align .mat-expansion-panel-header-description {
+flex-basis: 0;
+justify-content: start;
+align-items: center;
+}
+
+.accordion-headers-align .mat-expansion-panel-header-description {
+  flex-grow: 1.5;
+}
+
+.error {
+  display: inline-block;
+  color: #a94442;
+  background-color: #f2dede;
+}
+
+.spinner-container {
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.spinner {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  margin-left: -4em;
 }
