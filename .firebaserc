@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "angular-nearby": "angular-nearby",
+    "default": "angular-nearby"
+  }
+}
