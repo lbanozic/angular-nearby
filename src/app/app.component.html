@@ -86,16 +86,15 @@
       </mat-expansion-panel>
     </mat-accordion>
   </div>
-
-  <!-- Get more places -->
-  <div id="get-more-places-container">
-    <button mat-raised-button>
-      Get more
-      <mat-icon class="button-action-icon">arrow_downward</mat-icon>
-    </button>
-  </div>
-
 </ng-template>
+
+<!-- Get more places -->
+<div id="get-more-places-container" *ngIf="nextPageToken">
+  <button mat-raised-button (click)="getMorePlaces()">
+    Get more
+    <mat-icon class="button-action-icon">arrow_downward</mat-icon>
+  </button>
+</div>
 
 <!-- Loading places error -->
 <ng-template [ngIf]="showLoadingError">

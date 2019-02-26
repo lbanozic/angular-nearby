@@ -13,13 +13,19 @@ export class PlaceService {
   placesLocation: string = 'location=';
   placesRadius: string = 'radius=1000';
   placesKey: string = 'key=AIzaSyC0jgH98w3m1VT1oEZVQiBK23XQmYhfuX4';
+  pageToken: string = 'pagetoken=';
 
   constructor(private http: HttpClient) {}
 
   // get places
   getPlaces(lat: number, lng: number): Observable<Place> {
     let requestUrl = `${this.proxyUrl}${this.placesUrl}?${this.placesLocation}${lat},${lng}&${this.placesRadius}&${this.placesKey}`;
-    console.log(`request url: ${requestUrl}`);
+    return this.http.get<Place>(requestUrl);
+  }
+
+  // get places by page token
+  getPlacesByPageToken(nextPageToken: string): Observable<Place> {
+    let requestUrl = `${this.proxyUrl}${this.placesUrl}?${this.pageToken}${nextPageToken}&${this.placesKey}`;
     return this.http.get<Place>(requestUrl);
   }
 }

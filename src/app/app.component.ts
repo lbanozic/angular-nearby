@@ -18,10 +18,56 @@ export class AppComponent implements OnInit {
   showLoadingSpinner: boolean = false;
   showLocationError: boolean = false;
   locationError: string = '';
+  nextPageToken: string;
 
   constructor(private placeService: PlaceService) { }
 
   ngOnInit() { }
+
+  getMorePlaces() {
+
+    // show loading spinner
+    this.showLoadingSpinner = true;
+
+    // set default values
+    this.searchValue = '';
+    this.filters = [];
+    this.showLoadingError = false;
+
+    if (this.nextPageToken) {
+      this.placeService.getPlacesByPageToken(this.nextPageToken).subscribe(place => {
+
+        // set fetched places data
+        this.nextPageToken = place.next_page_token;
+        this.places = this.placeResults.concat(place.results);
+        this.placeResults = this.places;
+
+        if (this.places && this.places.length) {
+
+          // construct filters with place types
+          this.placeResults.forEach(p => {
+            p.types.forEach(t => {
+              if (this.filters.filter(function (f) { return f.name === t; }).length === 0) {
+                this.filters.push(new Filter(t));
+              }
+            });
+          });
+        } else {
+
+          // show loading error
+          this.showLoadingError = true;
+        }
+
+        // hide loading spinner
+        this.showLoadingSpinner = false;
+
+      });
+    } else {
+
+      // hide loading spinner
+      this.showLoadingSpinner = false;
+    }
+  }
 
   // get user location and then get places from service
   getPlaces() {
@@ -37,7 +83,7 @@ export class AppComponent implements OnInit {
     this.showLocationError = false;
     this.locationError = '';
 
-    //show loading spinner
+    // show loading spinner
     this.showLoadingSpinner = true;
 
     if (navigator.geolocation) {
@@ -91,6 +137,7 @@ export class AppComponent implements OnInit {
     this.placeService.getPlaces(lat, lng).subscribe(place => {
 
       // set fetched places data
+      this.nextPageToken = place.next_page_token;
       this.places = place.results;
       this.placeResults = this.places;
 
