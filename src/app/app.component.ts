@@ -42,29 +42,15 @@ export class AppComponent implements OnInit {
         this.places = this.placeResults.concat(place.results);
         this.placeResults = this.places;
 
+        // set filters
         if (this.places && this.places.length) {
-
-          // construct filters with place types
-          this.placeResults.forEach(p => {
-            p.types.forEach(t => {
-              if (this.filters.filter(function (f) { return f.name === t; }).length === 0) {
-                this.filters.push(new Filter(t));
-              }
-            });
-          });
+          this.setFilters(this.placeResults);
         } else {
-
-          // show loading error
           this.showLoadingError = true;
         }
-
-        // hide loading spinner
         this.showLoadingSpinner = false;
-
       });
     } else {
-
-      // hide loading spinner
       this.showLoadingSpinner = false;
     }
   }
@@ -141,27 +127,26 @@ export class AppComponent implements OnInit {
       this.places = place.results;
       this.placeResults = this.places;
 
+      // set filters
       if (this.places && this.places.length) {
-
-        // construct filters with place types
-        this.placeResults.forEach(p => {
-          p.types.forEach(t => {
-            if (this.filters.filter(function (f) { return f.name === t; }).length === 0) {
-              this.filters.push(new Filter(t));
-            }
-          });
-        });
+        this.setFilters(this.placeResults);
       } else {
-
-        // show loading error
         this.showLoadingError = true;
       }
-
-      // hide loading spinner
       this.showLoadingSpinner = false;
-
     });
 
+  }
+
+  // set filters with place types
+  setFilters(placeResults: PlaceResult[]) {
+    placeResults.forEach(p => {
+      p.types.forEach(t => {
+        if (this.filters.filter(function (f) { return f.name === t; }).length === 0) {
+          this.filters.push(new Filter(t));
+        }
+      });
+    });
   }
 
   // update places that match filters and search value
