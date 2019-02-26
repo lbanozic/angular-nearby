@@ -54,7 +54,7 @@ body {
 }
 
 .error {
-  display: inline-block;
+  display: inline-block !important;
   color: #a94442;
   background-color: #f2dede;
 }
